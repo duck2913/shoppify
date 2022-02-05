@@ -1,0 +1,84 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+body {
+	background: linear-gradient(260deg, #b75d62, #754d4f);
+}
+
+.handbag-body {
+	padding: 2rem 15rem;
+	color: white;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: white;
+}
+
+.nav .logo {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.nav .shopping-cart {
+	color: white;
+	fill: white;
+}
+
+.showcase {
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 2;
+}
+
+.showcase > * {
+	flex: 1;
+}
+
+.showcase__img {
+	width: 5rem;
+}
+
+.showcase__title {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.btn {
+	margin-top: 2rem;
+	padding: 0.5rem 2rem;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.circle {
+	position: absolute;
+}
+
+.circle-1 {
+	top: 15%;
+	left: 15%;
+}
+
+.circle-2 {
+	bottom: 15%;
+	left: 40%;
+}
+.circle-3 {
+	top: 40%;
+	right: 10%;
+}

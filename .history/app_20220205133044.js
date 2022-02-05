@@ -1,0 +1,5 @@
+barba.init({
+    transitions: [
+        {}
+    ]
+})

@@ -1,0 +1,36 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background: linear-gradient(260deg, #b75d62, #754d4f);
+}
+
+.handbag-body {
+	color: white;
+}
+
+.nav {
+	padding: 2rem 15rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: white;
+}
+
+.nav .logo {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.nav .shopping-cart {
+	color: white;
+	fill: white;
+}
+
+.showcase {
+	display: flex;
+}
