@@ -1,3 +1,3 @@
 # shoppify
 
-#Small project to try out BarbaJS and GsapJS
+## Small project to try out BarbaJS and GsapJS
