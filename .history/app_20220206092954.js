@@ -30,15 +30,21 @@ const leaveAnimation = (current, done) => {
 	);
 };
 
-const enterAnimation = (current, done, gradient) => {
-	const product = current.querySelector(".image-container");
-	const text = current.querySelector(".showcase-text");
-	const circles = current.querySelectorAll(".circle");
-	const arrow = current.querySelector(".showcase-arrow");
+const enterAnimation = (next, done, gradient) => {
+	const product = next.querySelector(".image-container");
+	const text = next.querySelector(".showcase-text");
+	const circles = next.querySelectorAll(".circle");
+	const arrow = next.querySelector(".showcase-arrow");
 	return (
 		tlEnter.fromTo(arrow, { opacity: 0, y: 50 }, { opacity: 1, y: 0, onComplete: done }),
-		tlEnter.to("body", { background: gradient }, "<"),
-		tlEnter.fromTo(product, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, "<"),
+		tlEnter.to(
+			"body",
+			{
+				background: gradient,
+			},
+			"<",
+		),
+		tlEnter.fromTo(product, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "<"),
 		tlEnter.fromTo(text, { y: 100, opacity: 0 }, { opacity: 1, y: 0 }, "<"),
 		tlEnter.fromTo(
 			circles,
@@ -55,6 +61,15 @@ const enterAnimation = (current, done, gradient) => {
 	);
 };
 
+function productEnterAnimation(next, done) {
+	tlEnter.fromTo(next, { y: "100%" }, { y: "0%" });
+	tlEnter.fromTo(
+		".card",
+		{ opacity: 0, y: 50 },
+		{ opacity: 1, y: 0, stagger: 0.1, onComplete: done },
+	);
+}
+
 //Run animations
 barba.init({
 	preventRunning: true,
@@ -65,9 +80,9 @@ barba.init({
 			once(data) {
 				const done = this.async();
 				let next = data.next.container;
-				let gradient = getGradient(data.next.namespace);
-				gsap.set("body", { background: gradient });
-				enterAnimation(next, done, gradient);
+				let gradient = data.next.namespace;
+				gsap.set("body", { background: getGradient(gradient) });
+				enterAnimation(next, done, getGradient(gradient));
 			},
 			leave(data) {
 				const done = this.async();
@@ -77,20 +92,20 @@ barba.init({
 			enter(data) {
 				const done = this.async();
 				let next = data.next.container;
-				let gradient = getGradient(data.next.namespace);
-				enterAnimation(next, done, gradient);
+				let gradient = data.next.namespace;
+				enterAnimation(next, done, getGradient(gradient));
 			},
 		},
-		//product page animation
+		// product page transitions
 		{
 			name: "product-transition",
 			sync: true,
-			from: { namespace: ["handbag", "product", "boot", "product", "hat", "product"] },
-			to: { namespace: ["product", "handbag", "product", "hat", "product", "hat"] },
+			from: { namespace: ["handbag", "product"] },
+			to: { namespace: ["product", "handbag"] },
 			enter(data) {
 				const done = this.async();
-				let next = data.next.container;
-				productEnterAnimation(next, done);
+				let current = data.current.container;
+				productLeaveAnimation(current, done);
 			},
 			leave(data) {
 				const done = this.async();
@@ -101,25 +116,13 @@ barba.init({
 	],
 });
 
-function productEnterAnimation(next, done) {
-	tlEnter.fromTo(next, { y: "100%" }, { y: "0%" });
-	tlEnter.fromTo(
-		".card",
-		{ opacity: 0, y: 50 },
-		{ opacity: 1, y: 0, stagger: 0.1, onComplete: done },
-	);
-}
-function productLeaveAnimation(current, done) {
-	tlLeave.fromTo(current, { y: "0%" }, { y: "100%", onComplete: done });
-}
-//changing gradient on showcase
 function getGradient(name) {
 	switch (name) {
 		case "handbag":
-			return "linear-gradient(260deg, #b75d62, #754d4f)";
-		case "boot":
-			return "linear-gradient(260deg, #5d8cb7, #4c4f70)";
+			return "linear-gradient(260deg, #b75d62,#754d4f)";
 		case "hat":
-			return "linear-gradient(260deg, #b27a5c, #7f5450)";
+			return "linear-gradient(260deg, #5d8cb7,#4c4f70)";
+		case "boot":
+			return "linear-gradient(260deg, #b27a5c,#7f5450)";
 	}
 }
