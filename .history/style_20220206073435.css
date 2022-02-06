@@ -1,0 +1,115 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: linear-gradient(260deg, #b75d62, #754d4f);
+	height: 100vh;
+	/* overflow: hidden; */
+}
+
+.handbag-body,
+.boot-body,
+.hat-body {
+	padding: 2rem 15rem;
+	color: white;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: white;
+}
+
+.nav .logo {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.nav .shopping-cart {
+	color: white;
+	fill: white;
+}
+
+.showcase {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+	position: relative;
+	z-index: 2;
+	min-height: 35rem;
+}
+
+.showcase > * {
+	flex: 1;
+}
+
+.showcase__img {
+	width: 5rem;
+}
+
+.showcase__title {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.btn {
+	margin-top: 2rem;
+	padding: 0.5rem 2rem;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+}
+
+.circle {
+	position: absolute;
+}
+
+.circle-1 {
+	top: 15%;
+	left: 15%;
+}
+
+.circle-2 {
+	bottom: 15%;
+	left: 40%;
+}
+.circle-3 {
+	top: 40%;
+	right: 10%;
+}
+
+.btn--arrow {
+	position: absolute;
+	bottom: 10%;
+	right: 0rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	z-index: 100;
+	background-color: transparent;
+	border: none;
+}
+
+.btn--arrow::before {
+	content: "doubleclick";
+	color: white;
+	position: absolute;
+	bottom: -70%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
